@@ -4,6 +4,19 @@ Beginner Cybersecurity Project - Python + JavaScript Password Checker
 
 **Beginner Cybersecurity Project** - Real-time password analysis tool!
 
+## 🚀 Quick Start
+
+### Python CLI
+```bash
+pip install -r requirements.txt  # if any
+python password_checker.py
+
+## **Web Version**
+1. index.html download karo
+2. Browser mein open karo
+3. Ya GitHub Pages enable karo
+
+
 ## 🚀 **Features**
 - ✅ 5-point strength analysis
 - 📊 Visual progress bar  
