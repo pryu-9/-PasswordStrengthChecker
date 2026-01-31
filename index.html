@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🔐 Password Checker</title>
+    <style>
+        body { 
+            font-family: Arial; 
+            max-width: 400px; 
+            margin: 50px auto; 
+            padding: 20px; 
+            background: #f0f0f0;
+        }
+        h2 { color: #333; text-align: center; }
+        input { 
+            width: 100%; 
+            padding: 15px; 
+            font-size: 18px; 
+            border: 2px solid #ddd; 
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+        #bar { 
+            height: 25px; 
+            background: #ddd; 
+            border-radius: 12px; 
+            overflow: hidden; 
+            margin: 15px 0;
+        }
+        #fill { 
+            height: 100%; 
+            transition: all 0.4s ease;
+            border-radius: 12px;
+        }
+        #result { 
+            font-size: 28px; 
+            font-weight: bold; 
+            text-align: center;
+            margin: 15px 0;
+        }
+        .check { 
+            margin: 8px 0; 
+            font-size: 15px;
+            padding: 5px;
+            background: white;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>🔐 Password Strength Checker</h2>
+    <input type="password" id="pw" placeholder="Apna password type karo..." maxlength="50">
+    
+    <div id="bar">
+        <div id="fill" style="width:0%"></div>
+    </div>
+    
+    <div id="result">Typing shuru karo...</div>
+    <div id="checks"></div>
+
+    <script>
+        const pwInput = document.getElementById('pw');
+        const resultDiv = document.getElementById('result');
+        const barFill = document.getElementById('fill');
+        const checksDiv = document.getElementById('checks');
+
+        pwInput.addEventListener('input', checkStrength);
+
+        function checkStrength() {
+            const pw = pwInput.value;
+            let score = 0;
+            const checks = [];
+
+            // Same logic as Python
+            if (pw.length >= 8) { 
+                score++; 
+                checks.push('✅ Length OK'); 
+            } else { 
+                checks.push('❌ Min 8 chars'); 
+            }
+            
+            if (/[A-Z]/.test(pw)) { 
+                score++; 
+                checks.push('✅ Uppercase OK'); 
+            } else { 
+                checks.push('❌ Capital letter daalo'); 
+            }
+            
+            if (/[a-z]/.test(pw)) { 
+                score++; 
+                checks.push('✅ Small letters OK'); 
+            } else { 
+                checks.push('❌ Small letters daalo'); 
+            }
+            
+            if (/\d/.test(pw)) { 
+                score++; 
+                checks.push('✅ Number OK'); 
+            } else { 
+                checks.push('❌ Number daalo'); 
+            }
+            
+            if (/[!@#$%^&*]/.test(pw)) { 
+                score++; 
+                checks.push('✅ Special char OK'); 
+            } else { 
+                checks.push('❌ !@#$% daalo'); 
+            }
+
+            // Progress bar update
+            const percent = (score / 5) * 100;
+            barFill.style.width = percent + '%';
+            
+            if (score >= 4) {
+                barFill.style.background = '#4CAF50'; // Green
+                resultDiv.textContent = '🟢 STRONG';
+            } else if (score >= 3) {
+                barFill.style.background = '#FF9800'; // Orange  
+                resultDiv.textContent = '🟡 MEDIUM';
+            } else {
+                barFill.style.background = '#F44336'; // Red
+                resultDiv.textContent = '🔴 WEAK';
+            }
+            
+            resultDiv.textContent += ` (${score}/5)`;
+            checksDiv.innerHTML = checks.join('<br>');
+        }
+    </script>
+</body>
+</html>
