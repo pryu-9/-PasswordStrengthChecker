@@ -6,17 +6,6 @@ Beginner Cybersecurity Project - Python + JavaScript Password Checker
 
 ## 🚀 Quick Start
 
-## **Python CLI**
-```bash
-pip install -r requirements.txt  # if any
-python password_checker.py
-
-## **Web Version**
-1. index.html download karo
-2. Browser mein open karo
-3. Ya GitHub Pages enable karo
-
-
 ## 🚀 **Features**
 - ✅ 5-point strength analysis
 - 📊 Visual progress bar  
@@ -39,3 +28,14 @@ python pwd_checker.py
 
 # Browser (JavaScript)  
 double-click index.html
+
+##  **Python CLI**
+```bash
+pip install -r requirements.txt  # if any
+python password_checker.py
+
+## **Web Version**
+1. index.html download karo
+2. Browser mein open karo
+3. Ya GitHub Pages enable karo
+
